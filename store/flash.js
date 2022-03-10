@@ -8,10 +8,10 @@ export const state = () => ({
 
 export const mutations = {
   SET_MULTIPLIER: (state) => {
-    state.multiplier = Math.floor(Math.random() * 100) + 1
+    state.multiplier = Math.floor(Math.random() * 15) + 1
   },
   SET_SECOND_MULTIPLIER: (state) => {
-    state.secondMultiplier = Math.floor(Math.random() * 100) + 1
+    state.secondMultiplier = Math.floor(Math.random() * 15) + 1
   },
   SET_RESULT: (state) => {
     state.result = state.multiplier * state.secondMultiplier
@@ -24,14 +24,38 @@ export const mutations = {
     state.answer.push(
       state.multiplier * state.secondMultiplier + state.secondMultiplier
     )
-    state.answer.push(
+    const number =
       state.multiplier * state.secondMultiplier - Math.floor(Math.random() * 5)
-    )
-    state.answer.push(
+    if (!state.answer.includes(number)) {
+      state.answer.push(number)
+    } else {
+      const min = Math.min(...state.answer)
+      state.answer.push(min - 1)
+    }
+    const number2 =
       state.multiplier * state.secondMultiplier + Math.floor(Math.random() * 5)
-    )
-    state.answer.push(state.multiplier * state.secondMultiplier + 6)
-    state.answer.splice(Math.random() * 5, 0, state.result)
+    if (!state.answer.includes(number2)) {
+      state.answer.push(number2)
+    } else {
+      const max = Math.max(...state.answer)
+      state.answer.push(max + 1)
+    }
+    const number3 =
+      state.multiplier * state.secondMultiplier + Math.floor(Math.random() * 10)
+    if (!state.answer.includes(number3)) {
+      state.answer.push(number3)
+    } else {
+      const max = Math.max(...state.answer)
+      state.answer.push(max + 1)
+    }
+    if (!state.answer.includes(state.result)) {
+      state.answer.splice(Math.random() * 5, 0, state.result)
+    } else {
+      state.answer.splice(state.answer.indexOf(state.result), 1)
+      const max = Math.max(...state.answer)
+      state.answer.push(max + 1)
+      state.answer.splice(Math.random() * 5, 0, state.result)
+    }
   },
   CHECK_RESULT: (state, payload) => {
     if (state.result === payload) {

@@ -1,38 +1,39 @@
 /* eslint-disable import/no-named-as-default-member */
 import { createLocalVue, mount } from '@vue/test-utils'
 import Vuex from 'vuex'
-import { state } from '@/store/flash.js'
-import CardFlash from '@/components/CardFlash.vue'
+import Vue from 'vue'
+import AnswerFlash from '@/components/AnswerFlash.vue'
 
-describe('CardFlash', () => {
-  const mountCardFlash = () => {
+describe('AnswerFlash', () => {
+  const mountAnswerFlash = () => {
     const localVue = createLocalVue()
     localVue.use(Vuex)
     const store = new Vuex.Store({
       modules: {
         flash: {
-          state,
+          state: {
+            answer: [10, 10, 10, 10, 10, 10],
+          },
           namespaced: true,
         },
       },
     })
-    const wrapper = mount(CardFlash, {
+    const wrapper = mount(AnswerFlash, {
       mocks: {
         $store: store,
       },
     })
+    Vue.nextTick()
     return { store, wrapper }
   }
   it('should mount of the component', () => {
-    const { wrapper } = mountCardFlash()
+    const { wrapper } = mountAnswerFlash()
     expect(wrapper.vm).toBeDefined()
   })
 
   it('should show multiplier and secondMultiplier', () => {
-    const { wrapper } = mountCardFlash()
-    const multiplier = wrapper.find('[data-testid="multiplier"]')
-    const secondMultiplier = wrapper.find('[data-testid="secondMultiplier"]')
-    expect(multiplier.text()).toContain('0')
-    expect(secondMultiplier.text()).toContain('0')
+    const { wrapper } = mountAnswerFlash()
+    const answer = wrapper.findAll('[data-testid="answer"]')
+    expect(answer).toHaveLength(6)
   })
 })
