@@ -22,10 +22,12 @@ export default {
 </script>
 <style lang="scss">
 .answers {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(auto-fill, 30px);
+  grid-row-gap: 3.5em;
+  grid-column-gap: 1em;
   .answer {
     cursor: pointer;
     font-size: 3rem;
