@@ -17,6 +17,7 @@ export const mutations = {
     state.result = state.multiplier * state.secondMultiplier
   },
   SET_ANSWER: (state) => {
+    state.answer = []
     state.answer.push(
       state.multiplier * state.secondMultiplier + state.multiplier
     )
@@ -30,7 +31,7 @@ export const mutations = {
       state.multiplier * state.secondMultiplier + Math.floor(Math.random() * 5)
     )
     state.answer.push(state.multiplier * state.secondMultiplier + 6)
-    state.answer.push(state.result)
+    state.answer.splice(Math.random() * 5, 0, state.result)
   },
   CHECK_RESULT: (state, payload) => {
     if (state.result === payload) {
