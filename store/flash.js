@@ -21,9 +21,18 @@ export const mutations = {
     state.answer.push(
       state.multiplier * state.secondMultiplier + state.multiplier
     )
-    state.answer.push(
-      state.multiplier * state.secondMultiplier + state.secondMultiplier
-    )
+    if (
+      !state.answer.includes(
+        state.multiplier * state.secondMultiplier + state.multiplier
+      )
+    ) {
+      state.answer.push(
+        state.multiplier * state.secondMultiplier + state.multiplier
+      )
+    } else {
+      const min = Math.min(...state.answer)
+      state.answer.push(min - 1)
+    }
     const number =
       state.multiplier * state.secondMultiplier - Math.floor(Math.random() * 5)
     if (!state.answer.includes(number)) {
