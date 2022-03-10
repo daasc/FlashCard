@@ -5,6 +5,7 @@
       :key="index"
       class="answer"
       data-testid="answer"
+      @click="check(item)"
     >
       {{ item }}
     </div>
@@ -16,6 +17,11 @@ export default {
   computed: {
     answer() {
       return this.$store.state.flash.answer
+    },
+  },
+  methods: {
+    check(item) {
+      this.$store.commit('flash/CHECK_RESULT', item)
     },
   },
 }

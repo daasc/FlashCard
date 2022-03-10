@@ -20,6 +20,7 @@ describe('CardFlash', () => {
       mocks: {
         $store: store,
       },
+      localVue,
     })
     return { store, wrapper }
   }
