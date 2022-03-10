@@ -93,9 +93,9 @@ describe('Flash', () => {
     store.commit('CHECK_RESULT', result)
     expect(store.state.isCorrect).toBe(false)
   })
-  it('should set new multipliers, result, isCorrect and answer values when AGAIN is called', () => {
+  it('should set new multipliers, result, isCorrect and answer values when START is called', () => {
     const { store } = createStore()
-    store.commit('AGAIN')
+    store.commit('START')
     expect(store.state.multiplier).toBe(store.state.multiplier)
     expect(store.state.secondMultiplier).toBe(store.state.secondMultiplier)
     expect(store.state.isCorrect).toBe(null)

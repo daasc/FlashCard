@@ -39,7 +39,7 @@ export const mutations = {
       state.isCorrect = false
     }
   },
-  AGAIN: (state) => {
+  START: (state) => {
     mutations.SET_MULTIPLIER(state)
     mutations.SET_SECOND_MULTIPLIER(state)
     mutations.SET_RESULT(state)
