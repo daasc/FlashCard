@@ -10,14 +10,16 @@
       }}</span>
     </div>
     <hr class="divider" />
+    <alert-flash></alert-flash>
     <answer-flash></answer-flash>
   </div>
 </template>
 <script>
+import AlertFlash from './AlertFlash.vue'
 import AnswerFlash from './AnswerFlash.vue'
 export default {
   name: 'CardFlash',
-  components: { AnswerFlash },
+  components: { AnswerFlash, AlertFlash },
   computed: {
     multiplier() {
       return this.$store.state.flash.multiplier

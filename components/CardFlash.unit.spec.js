@@ -3,6 +3,8 @@ import { createLocalVue, mount } from '@vue/test-utils'
 import Vuex from 'vuex'
 import { state } from '@/store/flash.js'
 import CardFlash from '@/components/CardFlash.vue'
+import AlertFlash from '@/components/AlertFlash.vue'
+import AnswerFlash from '@/components/AnswerFlash.vue'
 
 describe('CardFlash', () => {
   const mountCardFlash = () => {
@@ -27,6 +29,18 @@ describe('CardFlash', () => {
   it('should mount of the component', () => {
     const { wrapper } = mountCardFlash()
     expect(wrapper.vm).toBeDefined()
+  })
+
+  it('should mount of the AlertFlash component', () => {
+    const { wrapper } = mountCardFlash()
+    const alert = wrapper.findComponent(AlertFlash)
+    expect(alert.vm).toBeDefined()
+  })
+
+  it('should mount of the AnswerFlash component', () => {
+    const { wrapper } = mountCardFlash()
+    const answer = wrapper.findComponent(AnswerFlash)
+    expect(answer.vm).toBeDefined()
   })
 
   it('should show multiplier and secondMultiplier', () => {
