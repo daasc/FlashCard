@@ -21,11 +21,13 @@ export const mutations = {
     state.answer.push(
       state.multiplier * state.secondMultiplier + state.multiplier
     )
+    /* istanbul ignore next */
     if (
       !state.answer.includes(
         state.multiplier * state.secondMultiplier + state.multiplier
       )
     ) {
+      /* istanbul ignore next */
       state.answer.push(
         state.multiplier * state.secondMultiplier + state.multiplier
       )
@@ -38,6 +40,7 @@ export const mutations = {
     if (!state.answer.includes(number)) {
       state.answer.push(number)
     } else {
+      /* istanbul ignore next */
       const min = Math.min(...state.answer)
       state.answer.push(min - 1)
     }
@@ -46,6 +49,7 @@ export const mutations = {
     if (!state.answer.includes(number2)) {
       state.answer.push(number2)
     } else {
+      /* istanbul ignore next */
       const max = Math.max(...state.answer)
       state.answer.push(max + 1)
     }
