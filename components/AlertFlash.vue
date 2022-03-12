@@ -1,6 +1,12 @@
 <template>
   <div class="alert">
-    <span data-testid="message"> {{ correct }}</span>
+    <span
+      data-testid="message"
+      class="message"
+      :class="{ correct: correct === 'Correct', error: correct === 'Wrong' }"
+    >
+      {{ correct }}</span
+    >
     <div v-if="correct !== 'Correct'" class="choose">Choose Your Answer</div>
     <button
       v-if="correct === 'Correct'"
@@ -41,6 +47,16 @@ export default {
   .choose {
     font-size: 18px;
   }
+  .correct {
+    color: #1899d6;
+  }
+  .error {
+    color: #e70d0d;
+  }
+  .message {
+    font-size: 17px;
+    margin-bottom: 5px;
+  }
   .button-19 {
     appearance: button;
     background-color: #1899d6;
@@ -68,7 +84,8 @@ export default {
     -webkit-user-select: none;
     vertical-align: middle;
     white-space: nowrap;
-    width: 50%;
+    width: 40%;
+    height: 45px;
     &after {
       background-clip: padding-box;
       background-color: #1cb0f6;
